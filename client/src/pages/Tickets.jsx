@@ -21,7 +21,7 @@ const Tickets = ({ role }) => {
 
   const [tickets, setTickets] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [editingTicket, setEditingTicket] = useState(null); 
+  const [editingTicket, setEditingTicket] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -42,7 +42,7 @@ const Tickets = ({ role }) => {
           data = await specificUserTickets(userId);
         }
       } else {
-        data = await getAllTickets(); 
+        data = await getAllTickets();
       }
 
       setTickets(Array.isArray(data.data) ? data.data : data.data || []);
@@ -170,15 +170,18 @@ const Tickets = ({ role }) => {
                   })
                 )}
               </tbody>
-              <tfoot className="bg-slate-50 border-t border-slate-200">
+              {/* <tfoot className="bg-slate-50 border-t border-slate-200">
                 <tr>
                   <td colSpan="7" className="px-6 py-4 text-center text-slate-500">
                     Showing {tickets.length} of {tickets.length} tickets
                   </td>
                 </tr>
-              </tfoot>
+              </tfoot> */}
             </table>
           </div>
+            <div className="px-6 py-4 text-center text-slate-500 border-t border-slate-200">
+              Showing {tickets.length} of {tickets.length} tickets
+            </div>
         </div>
       </div>
 
