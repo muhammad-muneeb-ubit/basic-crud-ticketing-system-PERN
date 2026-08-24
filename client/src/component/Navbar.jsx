@@ -74,7 +74,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
-
+import logo from '../../public/favicon.png';
 const Navbar = ({ role, setUserRole }) => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -127,7 +127,8 @@ const Navbar = ({ role, setUserRole }) => {
               onClick={handleLinkClick}
               className="text-xl font-black text-indigo-600 tracking-tight"
             >
-              SupportHub
+              {/* SupportHub */}
+              <img src={logo} alt="SupportHub Logo" className="h-8 w-8 mr-2 inline-block" />
             </Link>
           </div>
 
