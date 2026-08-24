@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const BACKEND_URL = 'http://localhost:5000';
+const BACKEND_URL = 'https://basic-crud-ticketing-system-pern.onrender.com';
+// const BACKEND_URL = 'http://localhost:5000';
 
 export const getAllUsers = async () => {
   try {
