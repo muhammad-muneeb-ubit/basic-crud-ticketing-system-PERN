@@ -28,7 +28,7 @@ function App() {
         <Route path="/register" element={<Register />} />
 
         {/* Protected Routes with Navbar */}
-        <Route element={<Layout role={userRole} />}>
+        <Route element={<Layout role={userRole} setUserRole={setUserRole} />}>
           <Route path="/tickets" element={<Tickets role={userRole} />} />
           <Route path="/tickets/create" element={<CreateTickets />} />
           <Route path="/tickets/:id" element={<TicketsDetails role={userRole} />} />
