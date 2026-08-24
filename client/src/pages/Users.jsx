@@ -82,15 +82,11 @@ const Users = () => {
                   })
                 )}
               </tbody>
-              <tfoot className="bg-slate-50 border-t border-slate-200">
-                <tr>
-                  <td colSpan="5" className="px-6 py-4 text-center text-slate-500">
-                    Showing {users.length} of {users.length} users
-                  </td>
-                </tr>
-              </tfoot>
             </table>
           </div>
+             <div className="px-6 py-4 text-center text-slate-500 border-t border-slate-200">
+              Showing {users.length} of {users.length} users
+            </div>
         </div>
       </div>
     </div>
