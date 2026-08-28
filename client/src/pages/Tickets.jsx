@@ -89,6 +89,11 @@ const Tickets = ({ role }) => {
     setEditingTicket({ ...editingTicket, [e.target.name]: e.target.value });
   };
 
+  const totalTickets = tickets.length;
+  const openTickets = tickets.filter(t => t.status?.toLowerCase() === 'open' || t.status?.toLowerCase() === 'opened').length;
+  const inProgressTickets = tickets.filter(t => t.status?.toLowerCase() === 'in progress').length;
+  const closedTickets = tickets.filter(t => t.status?.toLowerCase() === 'closed').length;
+
   return (
     <div className="min-h-screen bg-slate-50 p-8 relative">
       <div className="max-w-7xl mx-auto">
@@ -103,6 +108,26 @@ const Tickets = ({ role }) => {
           >
             Create Ticket
           </button> */}
+        </div>
+
+        {/* Summary Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col items-center justify-center text-center">
+            <p className="text-sm font-semibold text-slate-500 uppercase tracking-wide">Total Tickets</p>
+            <h3 className="text-4xl font-extrabold text-indigo-600 mt-2">{totalTickets}</h3>
+          </div>
+          <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col items-center justify-center text-center">
+            <p className="text-sm font-semibold text-slate-500 uppercase tracking-wide">Open Tickets</p>
+            <h3 className="text-4xl font-extrabold text-blue-500 mt-2">{openTickets}</h3>
+          </div>
+          <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col items-center justify-center text-center">
+            <p className="text-sm font-semibold text-slate-500 uppercase tracking-wide">In Progress</p>
+            <h3 className="text-4xl font-extrabold text-amber-500 mt-2">{inProgressTickets}</h3>
+          </div>
+          <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col items-center justify-center text-center">
+            <p className="text-sm font-semibold text-slate-500 uppercase tracking-wide">Closed Tickets</p>
+            <h3 className="text-4xl font-extrabold text-green-700 mt-2">{closedTickets}</h3>
+          </div>
         </div>
 
         <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
@@ -198,29 +223,31 @@ const Tickets = ({ role }) => {
               <div>
                 <label className="block text-sm font-semibold text-slate-700 mb-1">Title</label>
                 <input
+                disabled
                   type="text"
                   name="title"
                   required
                   value={editingTicket.title}
                   onChange={handleEditChange}
-                  className="w-full px-4 py-2.5 rounded-lg border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-indigo-500/40 focus:border-indigo-500 transition-all outline-none"
+                  className="cursor-not-allowed w-full px-4 py-2.5 rounded-lg border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-indigo-500/40 focus:border-indigo-500 transition-all outline-none"
                 />
               </div>
 
               <div>
                 <label className="block text-sm font-semibold text-slate-700 mb-1">Description</label>
                 <textarea
+                  disabled
                   name="description"
                   required
                   rows={4}
                   value={editingTicket.description}
                   onChange={handleEditChange}
-                  className="w-full px-4 py-2.5 rounded-lg border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-indigo-500/40 focus:border-indigo-500 transition-all outline-none resize-none"
+                  className="cursor-not-allowed w-full px-4 py-2.5 rounded-lg border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-indigo-500/40 focus:border-indigo-500 transition-all outline-none resize-none"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-1">Status</label>
+                <label className="cursor-pointer block text-sm font-semibold text-slate-700 mb-1">Status</label>
                 <select
                   name="status"
                   value={editingTicket.status}
